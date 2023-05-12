@@ -4,7 +4,6 @@ var bodyParser = require('body-parser')
 const { createClient } = require("@supabase/supabase-js");
 
 dotenv.config();
-const port = 3000;
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -80,6 +79,6 @@ app.post("/api/auth/signout", async(req,res)=>{
     }
 })
 
-app.listen(port, () => {
-    console.log(`Listening on port ${port}!`);
+app.listen(process.env.PORT, () => {
+    console.log(`Listening on port ${process.env.PORT}!`);
 });
