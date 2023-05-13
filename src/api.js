@@ -75,7 +75,7 @@ router.post("/auth/signout", async (req, res) => {
 });
 
 
-router.get("/api/fabrication", auth, async (req, res) => {
+router.get("/fabrication", auth, async (req, res) => {
   // console.log(req.user);
   const user = req.user;
   const { data, error } = await supabase.from("Fabrication").select();
@@ -88,15 +88,15 @@ router.get("/api/fabrication", auth, async (req, res) => {
   }
 });
 
-router.post("/api/fabrication", async (req,res) => {
+router.post("/fabrication", async (req,res) => {
 
 })
 
-router.put("/api/fabrication", async (req,res) => {
+router.put("/fabrication", async (req,res) => {
 
 })
 
-router.get("/api/sub_assembly", auth, async (req, res) => {
+router.get("/sub_assembly", auth, async (req, res) => {
 
   const user = req.user;
   const { data, error } = await supabase.from("SubAssembly").select();
@@ -109,7 +109,7 @@ router.get("/api/sub_assembly", auth, async (req, res) => {
   }
 });
 
-router.get("/api/assembly", auth, async (req, res) => {
+router.get("/assembly", auth, async (req, res) => {
   
   const user = req.user;
   const { data, error } = await supabase.from("Assembly").select();
@@ -123,7 +123,7 @@ router.get("/api/assembly", auth, async (req, res) => {
 
 });
 
-router.get("/api/parts", auth, async (req, res) => {
+router.get("/parts", auth, async (req, res) => {
   
   const user = req.user;
   const { data, error } = await supabase.from("Parts").select();
