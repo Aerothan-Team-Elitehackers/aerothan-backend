@@ -171,7 +171,7 @@ router.put("/assembly", async (req, res) => {
   }
 });
 
-router.get("/parts", auth, async (req, res) => {
+router.get("/parts", async (req, res) => {
     const user = req.user;
     const { data, error } = await supabase.from("Parts").select();
 
