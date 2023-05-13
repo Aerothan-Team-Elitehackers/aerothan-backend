@@ -1,10 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const serverless = require("serverless-http");
 var bodyParser = require("body-parser");
 const { createClient } = require("@supabase/supabase-js");
 
 dotenv.config();
 const app = express();
+const router = express.Router();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -13,11 +15,11 @@ const supabase = createClient(
   process.env.SUPABASE_ANON_PUBLIC_KEY
 );
 
-app.get("/api", async (req, res) => {
+router.get("/api", async (req, res) => {
   res.send("Server is working!");
 });
 
-app.post("/api/auth/signin", async (req, res) => {
+router.post("/api/auth/signin", async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -36,7 +38,7 @@ app.post("/api/auth/signin", async (req, res) => {
   }
 });
 
-app.post("/api/auth/signup", async (req, res) => {
+router.post("/api/auth/signup", async (req, res) => {
   // console.log(req.body);
   const { name, email, password, department } = req.body;
 
@@ -64,13 +66,11 @@ app.post("/api/auth/signup", async (req, res) => {
   }
 });
 
-app.post("/api/auth/signout", async (req, res) => {
+router.post("/api/auth/signout", async (req, res) => {
   try {
     const { error } = await supabase.auth.signOut();
     res.json(error);
   } catch (e) {}
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT}!`);
-});
+app.use("/.netlify/functions/", router); // path must route to lambda

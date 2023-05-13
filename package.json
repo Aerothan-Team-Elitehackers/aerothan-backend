@@ -4,6 +4,8 @@
   "description": "aerothan backend",
   "main": "index.js",
   "scripts": {
+    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "build": "./node_modules/.bin/netlify-lambda build src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lalith",
@@ -12,6 +14,8 @@
     "@supabase/supabase-js": "^2.21.0",
     "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "netlify-lambda": "^2.0.16",
+    "serverless-http": "^3.2.0"
   }
 }
