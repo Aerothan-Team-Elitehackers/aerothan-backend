@@ -1,0 +1,23 @@
+const dotenv = require("dotenv");
+dotenv.config()
+const { createClient } = require("@supabase/supabase-js");
+
+var options = {
+    schema: 'public',
+    // global: { 
+    //     headers: { Authorization: `Bearer ${jwt}` }
+    //   }
+}
+const supabase = createClient(
+    process.env.SUPABASE_API_URL,
+    process.env.SUPABASE_ANON_PUBLIC_KEY,
+    options
+);
+
+const getCurrentUser = async (token) => {
+    var user = await supabase.auth.getUser(token);
+    console.log(user);
+    return user;
+}
+
+module.exports = {supabase:supabase, getCurrentUser: getCurrentUser};
