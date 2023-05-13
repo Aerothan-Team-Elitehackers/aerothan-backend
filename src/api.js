@@ -76,7 +76,7 @@ router.post("/auth/signout", async (req, res) => {
     } catch (e) {}
 });
 
-router.get("/fabrication", auth, async (req, res) => {
+router.get("/fabrication", async (req, res) => {
     // console.log(req.user);
     const user = req.user;
     // if(user.meta_data)
@@ -104,7 +104,7 @@ router.post("/fabrication", async (req, res) => {
     }
 });
 
-router.put("/fabrication", auth, async (req, res) => {
+router.put("/fabrication",  async (req, res) => {
     const {id, start_data, end_data} = req.body;
     const { data, error } = await supabase
         .from("Fabrication")
@@ -119,7 +119,7 @@ router.put("/fabrication", auth, async (req, res) => {
     }
 });
 
-router.get("/sub_assembly", auth, async (req, res) => {
+router.get("/sub_assembly", async (req, res) => {
     const user = req.user;
     const { data, error } = await supabase.from("SubAssembly").select();
 
@@ -130,7 +130,7 @@ router.get("/sub_assembly", auth, async (req, res) => {
     }
 });
 
-router.put("/sub_assembly", auth, async (req, res) => {
+router.put("/sub_assembly", async (req, res) => {
   const {id, start_data, end_data} = req.body;
   const { data, error } = await supabase
       .from("SubAssembly")
@@ -145,7 +145,7 @@ router.put("/sub_assembly", auth, async (req, res) => {
   }
 });
 
-router.get("/assembly", auth, async (req, res) => {
+router.get("/assembly", async (req, res) => {
     const user = req.user;
     const { data, error } = await supabase.from("Assembly").select();
 
@@ -156,7 +156,7 @@ router.get("/assembly", auth, async (req, res) => {
     }
 });
 
-router.put("/assembly", auth, async (req, res) => {
+router.put("/assembly", async (req, res) => {
   const {id, start_data, end_data} = req.body;
   const { data, error } = await supabase
       .from("Assembly")
