@@ -4,7 +4,7 @@
   "description": "aerothan backend",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "start": "netlify-lambda serve src",
     "build": "./node_modules/.bin/netlify-lambda build src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +13,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.21.0",
     "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "netlify-lambda": "^2.0.16",
